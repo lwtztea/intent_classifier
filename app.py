@@ -13,7 +13,7 @@ model = BertForMultiLabelClassification()
 model.to(device)
 
 model_path = 'lib/model/classifier.pt'
-model.load_state_dict(torch.load(model_path, map_location=device))
+model.classifier.load_state_dict(torch.load(model_path, map_location=device))
 
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
