@@ -1,8 +1,8 @@
 import torch
-from transformers import BertConfig, BertModel
+from transformers import BertConfig, BertModel, PreTrainedModel
 
 
-class BertForMultiLabelClassification(BertModel):
+class BertForMultiLabelClassification(PreTrainedModel):
     def __init__(self, config=BertConfig(), num_labels=77):
         super(BertForMultiLabelClassification, self).__init__(config)
         self.bert = BertModel.from_pretrained('bert-base-uncased')
