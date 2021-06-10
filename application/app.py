@@ -12,12 +12,12 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = BertForMultiLabelClassification()
 model.to(device)
 
-model_path = 'lib/model/classifier.pt'
+model_path = 'application/lib/model/classifier.pt'
 model.classifier.load_state_dict(torch.load(model_path, map_location=device))
 
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
-with open('lib/data/categories.json') as f:
+with open('application/lib/data/categories.json') as f:
     categories = json.load(f)
 
 
