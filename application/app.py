@@ -1,6 +1,6 @@
 import json
 import torch
-from flask import Flask, request, abort
+from flask import Flask, request, abort, Response
 from utils import tokenize_text, predict_intent
 from model import BertForMultiLabelClassification
 from transformers import BertTokenizer
@@ -29,7 +29,7 @@ def start():
 @app.route('/predict', methods=['POST'])
 def classify():
     if not (request.json and 'query' in request.json):
-        abort(400)
+        abort(Response("Your request should be in JSON format: {'query':[texts]}"))
     user_query = request.json['query']
 
     input_ids, mask = tokenize_text(user_query, tokenizer)
