@@ -6,8 +6,8 @@ EXPOSE 5000
 RUN apt-get update -y
 RUN apt-get install -y python3 python3-pip build-essential
 
-COPY . /app
 WORKDIR /app
+COPY . /app
 
 RUN python3 -m pip install --no-cache-dir --upgrade pip
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
